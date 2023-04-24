@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Port Details</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+
+                .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                }
+
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                        position: fixed;
+                        bottom: 30px;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        padding: 1rem 2rem;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                }
+
+                button:hover {
+                        background-color: #0062cc;
+                }
+
+                .message-box {
+                  background-color: #fff;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: center;
+                }
+
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+        </style>
+</head>
+<body>
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+         Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+        <div class="container">
+        <h2>NMAP Network Port Scan</h2>
+                <div class="message-box">
+                        <ul>
+                        <li> {{ data['list'][0] }} </li>
+                        {% for item in data['port'] %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                        </ul>
+                </div>
+                <form action="/" method="GET">
+                  <button type="submit">Return to main menu</button>
+                </form>
+                <p>Here are some <b>Recommendations</b> and an explanation on how ports can affect a network:<br><br>
+                   As you can see above, there are multiple 'ports' that have been detected as open.<br>
+                   A port on the network is a virtual communication channel which data is sent and received through.<br>
+                   Different services and applications use these ports, and can be exploited by attackers to gain<br>
+                   unauthorized access or execute attacks against vulnerabilities.<br><br>
+                   Some common ports you often find open are ones used by the Windows operating system [135,139]<br>
+                   that have the purpose of file and print sharing, keep this in mind as attackers may see these<br>
+                   ports being open and choose to take advantage of an exploit.<br>
+                   Generally ports are open on a network for a reason, for example, HTTP [80] and HTTPS [443] allow<br>
+                   us access to view this web page from the outside of the hosted environment<br>
+                   It is difficult to say that a specific port itself is dangerous, however, be aware that a well<br>
+                   restricted and secure network will not have all ports open to the entire outside world.<br><br>
+                   A port scan is a bit like someone coming to your house to do a survey on how many entrances<br>
+                   or exits they can find that would need to be covered by CCTV cameras. You would want to make<br>
+                   sure that every door or window is visible and tracked in case of an attacker trying to enter.<br>
+        </div>
+</body>
+</html>

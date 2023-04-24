@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Basic Information</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+
+                .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                }
+
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                        position: fixed;
+                        bottom: 30px;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        padding: 1rem 2rem;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                }
+
+                button:hover {
+                        background-color: #0062cc;
+                }
+
+                .message-box {
+                  background-color: #fff;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: center;
+                }
+
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+        </style>
+</head>
+<body>
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+                Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+        <div class="container">
+        <h2>Basic Wi-Fi Information</h2>
+                <div class="message-box">
+                        <ul>                
+                                <li> {{ data['ssid'][0] }} </li>
+                                <li> {{ data['security'][0] }} </li>
+                                <li> {{ data['ip'][0] }} </li>
+                        </ul>
+                </div>
+                <form action="/" method="GET">
+                  <button type="submit">Return to main menu</button>
+                </form>
+                {% if data['match'] == True %}
+                    <p>SSID <FONT COLOR="#008000"><u>found</u></FONT COLOR="#008000"> in the WiGLE Stats database.</p>
+                {% else %}
+                    <p>SSID <FONT COLOR="FF0000"><u>not found</u></FONT COLOR="FF0000"> in the WiGLE Stats database.</p>
+                {% endif %}
+
+                <p>Here are some <b>Recommendations</b> you should take given the Wi-Fi network you are currently connected to:<br>
+                   <br>
+                   If you are connected to a recognised SSID that has been found in WiGLE stats, then the network you are on is noted as the top 1000 common network names. <br>
+                   This database holds a large amount of public Wi-Fi and general names that are found most commonly. This is something you should keep in mind when connecting <br>
+                   to networks as leaving SSID names on default can be a good indicator of how secure the rest of the configuration is on the network you are joining.<br><br>
+                   The security protocol above is also a <b>critical</b> factor that determines the encryption algorithm being used. Here is a brief summary of each type below:<br>
+                                 (Note: I have colour coded these, RED being the worst - GREEN being the best.)<br><br>
+                   <FONT COLOR="FF0000"><b>WEP:</b></FONT COLOR="FF0000"> Is the older security protocol that is still used in some networks today. It was introduced with the first wireless 802.11 networks, using a single key<br>
+                        for encryption and decryption of the data. It is very widely known to be the one of the most insecure methods of encryption as there are available tools<br>
+                        to crack it.<br><br>
+                   <FONT COLOR="FFA500"><b>WPA:</b></FONT COLOR="FFA500"> The first version of WPA is designed to secure Wi-Fi networks. Specifically using the TKIP encryption<br>
+                        algorithm which is an outdated and less secure compared to modern standards.<br><br> 
+                   <FONT COLOR="6FFF69"><b>WPA2:</b></FONT COLOR="6FFF69"> This is the first reasonable choice of encryption as it is trickier to crack, although proven possible<br>
+                        during the practical demonstration. WPA2 comes in two forms, personal and enterprise. WPA2-Personal is more commonly found on public networks as it uses<br>
+                        a pre-shared key (containing a password) that passes authentication between the device and the network. This style can be vulnerable to brute force attacks<br>
+                        as we showed earlier.<br>
+                        WPA2-Enterprise uses a centralized authentication server which provides a higher level of security due to the users having to match login credentials.<br>
+                        It does this through authentication methods such as RADIUS servers where each individual will have unique details to sign in.<br><br>
+                   <FONT COLOR="008000"><b>WPA3:</b></FONT COLOR="008000"> This is the latest version of the WPA security protocol that provides numerous improvements to its<br>
+                        predecessors. This includes: stronger encryption, higher levels of password-based authentication, improved protection against man-in-the-middle attacks.<br><br>
+
+        </div>
+</body>
+</html>

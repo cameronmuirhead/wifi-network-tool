@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>VPN Status</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+
+                .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                }
+
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                        position: fixed;
+                        bottom: 30px;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        padding: 1rem 2rem;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                }
+
+                button:hover {
+                        background-color: #0062cc;
+                }
+
+                .message-box {
+                  background-color: #fff;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: center;
+                }
+
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+
+                .image{
+                 display: block;
+                 margin: 0 auto;
+                }
+        </style>
+</head>
+<body>
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+        Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+        <div class="container">
+                <h2>Current VPN Status</h2>
+                <div class="message-box">
+                        <ul>                
+                                <li> {{ data['vpn'][0] }} </li>
+                        </ul>
+                </div>
+                <form action="/" method="GET">
+                  <button type="submit">Return to main menu</button>
+                </form>
+                <p>Here are some <b>Recommendations</b> and an explanation on how VPNs can be used to improve security:<br><br>
+                   The above function is used to detect if the user is on a VPN. This is an easy and affordable way to improve<br>
+                   your security and privacy if you are required to use public Wi-Fi.<br><br>
+                   <FONT COLOR="#008000"><b>Benefits:</b></FONT COLOR="#008000"> Security is the main feature that is desired from users<br>
+                   when connecting to a VPN. Standard network traffic is available to others on a network as it is generally sent un-encrypted.<br>
+                   By using a VPN, the traffic is sent over a secure and encrypted channel, between the clients device and the remote VPN server.<br>
+                   This means that all of the traffic is difficult to intercept and read by an attacker. <br>
+                   Details such as your IP address, location and online activity are all masked behind the VPN server you are connected to. This<br>
+                   Increases privacy as well as keeping your personal credentials secure.<br>
+                   There are also other benefits to using a VPN such as, access to websites and services that are restricted on the public Wi-Fi network.<br><br>
+                   <FONT COLOR="#FF0000"><b>Downsides:</b></FONT COLOR="#FF0000"> Sometimes while using a VPN you may experience slower connection speeds as<br>
+                   all of your traffic is first sent to the VPN server and then re-directed to your original destination. There are some free VPNs out there<br>
+                   however, most of the top used require a subscription charge which can add up over time. The free VPNs generally have a data limitation or<br>
+                   restricted features.<br><br>
+
+                   <img src="https://www.avira.com/images/content/v3/generic/avira-vpn-what-is-a-vpn.gif" alt="What is a VPN?" width="500" class="image"><br><br>
+
+                   Although there are a couple of downsides to VPNs, the benefits heavily outweigh them. It is highly recommended to use a VPN if you are<br>
+                   using public Wi-Fi, mainly for the security improvements listed above - even if this costs you a couple of pennies per month!<br>
+                   
+        </div>
+</body>
+</html>

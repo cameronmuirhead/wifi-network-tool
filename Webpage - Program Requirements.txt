@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Program Requirements</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+
+                .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                }
+
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                        position: fixed;
+                        bottom: 30px;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        padding: 1rem 2rem;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                }
+
+                button:hover {
+                        background-color: #0062cc;
+                }
+
+                .message-box {
+                  background-color: #fff;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: center;
+                }
+
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+        </style>
+</head>
+<body>
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+        Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+        <div class="container">
+        <h2> Program Requirements </h2>
+                <div class="message-box">
+                </div>
+                <form action="/" method="GET">
+                  <button type="submit">Return to main menu</button>
+                </form>
+                        <p>Below are the  <b>Requirements</b> that are necessary to make the program function work:<br>
+                        <br>
+                        Overview: The system is designed with a client and a server. The client (your device) will run the script<br>
+                        provided, 'Python Program.py' that does all of the calculations and information gathering in the background.<br>
+                        Once the data has been discovered on the device, all of the information is sent to the server which is then<br>
+                        manipulated and sent to each relevant section and displayed.<br>
+                        The server is running Flask, which is a flexible framework that allows easy development of web applications.<br>
+                        With Flask the server is able to interact with databases, handle HTTP requests and responses as well as hosting a<br>
+                        a large range of libraries that can be integrated for additional functionality.<br>
+                        Each button has its own purpose, showing the client its current Wi-Fi network details with recommendations below.<br><br>
+                        In order for the system to work properly, the following python modules are required to be installed:<br>
+                        Subprocess, PyWiFi, const, time, requests, json & psutil. You will also require to be connected to a Wi-Fi network and<br>
+                        have internet access to navigate to the web page.<br>
+                        The NMAP service will be used to perform the network scan and is required to work with the client script.<br><br>
+                        The web server is hosted from a free online development environment called PythonAnywhere that allows code to be accessed<br>
+                        anywhere remotely. The services are run online providing all the cloud benefits over a local program, and allows us to run<br>
+                        the processing off of the users device.<br><br></p>
+                        <i>Client Python Version: 3.7.9<br>
+                        Flask version: 2.1.2<br>
+
+                        Server Python Version: 3.10.5</i><br><br>
+
+                        <b>Image References:</b>
+                        https://www.avira.com/images/content/v3/generic/avira-vpn-what-is-a-vpn.gif<br>
+                        https://media.giphy.com/media/MaXOUjkV73aO4/giphy.gif
+        </div>
+</body>
+</html>

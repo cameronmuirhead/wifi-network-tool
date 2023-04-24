@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Wi-Fi Network Tool</title>
+        <style>
+
+                body {
+                        background-color: #252525;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-image: url(https://media.giphy.com/media/MaXOUjkV73aO4/giphy.gif);
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-opacity: 0.5;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+                .terms {
+                        color: white;
+                        font-size: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column; 
+               }
+
+                .container {
+                        color: white;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+                }
+
+                .message-box {
+                  background-color: #252525;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: left;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                }
+
+                p {
+                        font-size: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column; 
+                }
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                        background-color: #732474;
+                        color: #fff;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        padding: 1rem 2rem;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: background-color 0.3s;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;      
+
+                }
+
+                button:hover {
+                        background-color: #4d144e;
+                }
+
+                /* Animation class */
+                .button-animation {
+                        animation-name: buttonClick;
+                        animation-duration: 0.3s;
+                }
+
+                @keyframes buttonClick {
+                        0% {transform: scale(1);}
+                        50% {transform: scale(1.2);}
+                        100% {transform: scale(1);}
+                }
+
+                .client-container {
+                        margin-top: 2rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        flex-basis: 100%;
+                }
+
+                .client {
+                         background-color: #979797;
+                         color: #fff;
+                         border-radius: 4px;
+                         font-size: 1.2rem;
+                         font-weight: bold;
+                         padding: 1rem 2rem;
+                         margin: 1rem;
+                         cursor: pointer;
+                         transition: background-color 0.3s;
+                }
+
+                .client:hover {
+                        background-color: #808080;
+                }
+
+                #disclaimer-overlay {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  z-index: 9999;
+                  display: none;
+                }
+
+                #disclaimer-text {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 80%;
+                  max-width: 600px;
+                  background-color: #fff;
+                  padding: 20px;
+                  border-radius: 5px;
+                  text-align: center;
+                  color: white !important;
+                }
+
+                #disclaimer-text h1 {
+                  font-size: 24px;
+                  margin-top: 0;
+                  color: white !important;
+                  text-align: center;
+                }
+
+                #disclaimer-text p {
+                  font-size: 16px;
+                  margin-top: 20px;
+                  margin-bottom: 40px;
+                }
+
+                #accept-button {
+                  background-color: #732474;
+                  color: #fff;
+                  border: none;
+                  border-radius: 4px;
+                  font-size: 1.2rem;
+                  font-weight: bold;
+                  padding: 1rem 2rem;
+                  margin: 1rem;
+                  cursor: pointer;
+                  transition: background-color 0.3s;
+                }
+
+                #accept-button:hover {
+                  background-color: #4d144e;
+                }
+
+
+        </style>
+    <script>
+        function agreeToTerms() {
+            // set a cookie to remember that the user has agreed to the terms
+            document.cookie = "agreedToTerms=true; path=/";
+            // hide the disclaimer
+            document.getElementById("disclaimer").style.display = "none";
+            // show the main content
+            document.getElementById("main").style.display = "block";
+        }
+
+        function checkTermsAgreement() {
+            // check if the user has previously agreed to the terms
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf("agreedToTerms=") == 0) {
+                    // the user has agreed to the terms, so show the main content
+                    document.getElementById("main").style.display = "block";
+                    return;
+                }
+            }
+            // the user has not agreed to the terms, so show the disclaimer
+            document.getElementById("disclaimer").style.display = "block";
+        }
+    </script>
+</head>
+<body onload="checkTermsAgreement()">
+    
+    <div id="disclaimer" style="display: none;" class="terms">
+        <div class="topbar">
+                Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <h1><b><u>Terms & Conditions</b></u></h1>
+        <p> By using this website, you must agree to the below terms and conditions. <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="message-box">
+                <ul>
+                        <b>[1]Use of the Website</b><br>
+                        Users are responsible for ensuring that their use of the website complies with applicable laws and regulations.<br>
+                        The website owners reserve the right to suspend or terminate access to the website for users who violate these terms.<br><br>
+
+                        <b>[2]Intellectual Property</b><br>
+                        All content and materials on the website, including text, images, logos, and software, are the property of the website owners<br> 
+                        and protected by intellectual property laws. Users may not copy or reproduce any content or materials from the website without<br>
+                        explicit permission from the owners.<br><br>
+
+                        <b>[3]Privacy Policy</b><br>
+                        The website must have a clear and comprehensive privacy policy that outlines how user data is collected, stored, and used.<br> 
+                        The policy should also provide details on how users can exercise their rights to access, modify, and delete their personal data.<br><br>
+
+                        <b>[4]Liability</b><br>
+                        The website owners are not liable for any damages, losses, or injuries resulting from the use or inability to use the website or its services.<br>
+                        Users are responsible for their own data and network security.<br><br>
+
+                        <b>[5]Governing Law</b><br>
+                        The terms and conditions of the website are governed by the laws of the jurisdiction in which the website owners are based.<br><br>
+
+                        <b>[6]Modification of Terms</b><br>
+                        The website owners reserve the right to modify the terms and conditions of the website at any time, without prior notice to users.<br>
+                        It is the responsibility of the users to review the terms regularly to ensure compliance.<br><br>
+
+                        <b>[7]Network Permission</b><br>
+                        The programs and services used in this tool are to be only <u>only</u> with permission from the owner of the network. NMAP scans that<br>
+                        are performed on a network without consent is illegal and should not be completed.<br><br>
+
+                </ul>
+        <p>                                          <button onclick="agreeToTerms()">Agree and Continue</button>        
+        </p>
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+    </div>
+    <div id="main" style="display: none;">
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+                Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+                <div class="container">
+                <h1>Wi-Fi Network Tool</h1>
+                <form action="/run_test" method="POST">
+                        <button type="submit" name="test_name" value="button1" onclick="this.classList.add('button-animation')">Basic Information</button>
+                        <button type="submit" name="test_name" value="button2" onclick="this.classList.add('button-animation')">Port Details</button>
+                        <button type="submit" name="test_name" value="button3" onclick="this.classList.add('button-animation')">Advanced Information</button>
+                        <button type="submit" name="test_name" value="button4" onclick="this.classList.add('button-animation')">VPN Status</button>
+                        <button type="submit" name="test_name" value="button5" onclick="this.classList.add('button-animation')">Program Requirements</button>
+                        <div class="client-container">     
+                                <button type="submit" name="test_name" value="Client Data" class="client"  onclick="this.classList.add('button-animation')">Client Data</button>
+                        </div>
+                </form>
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+</body>
+</html>

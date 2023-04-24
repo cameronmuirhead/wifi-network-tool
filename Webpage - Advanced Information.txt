@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Advanced Information</title>
+        <style>
+                body {
+                        background-color: #f2f2f2;
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                .topbar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                }
+
+                .bottombar {
+                        background-color: #979797;
+                        color: white;
+                        font-size: 0.8rem;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        width: 100%;
+                        position: fixed;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .image-container{
+                        position: absolute;
+                        top: 35px;
+                        left: 0;
+                        margin: 1rem 0 0 1rem;
+                }
+
+
+                .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        margin-bottom: 2rem;
+                }
+
+                form {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                button {
+                    position: fixed;
+                    bottom: 30px;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    padding: 1rem 2rem;
+                    margin: 1rem;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+
+                button:hover {
+                        background-color: #0062cc;
+                }
+
+                .message-box {
+                  background-color: #fff;
+                  padding: 0;
+                  border-radius: 4px;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  max-height: 500px;
+                  overflow-y: auto;
+                  width: 500px;
+                  text-align: center;
+                }
+
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+        </style>
+</head>
+<body>
+        <div class="image-container">
+                <a href="https://www.rgu.ac.uk/">
+                        <img src="https://avatars.githubusercontent.com/u/61322016?s=200&v=4" alt="Logo" width="50" height="50">
+                </a>
+        </div>
+        <div class="topbar">
+        Please note: this program has been designed to be run on an un-restricted network. Some of the tools used may breach GDPR and Data Protection Acts if not used with the correct permission.
+        </div>
+        <div class="bottombar">
+                Copyright © 2023 RGU School of Computing - Cameron Muirhead
+        </div>
+        <div class="container">
+        <h2>Advanced Wi-Fi Information</h2>
+                <div class="message-box">
+                        <ul>                
+                                <li> {{ data['ssid'][0] }} </li>
+                                <li> {{ data['signal'][0] }} </li>
+                                <li> {{ data['security'][0] }} </li>
+                        </ul>
+                </div>
+                <form action="/" method="GET">
+                  <button type="submit">Return to main menu</button>
+                </form>
+                <p>Here are some <b>Recommendations</b> on the type of security you should aim for:<br><br>
+                   In the advanced information above there is the security type listed. There are two types of security that a<br>
+                   Wi-Fi network can come in.<br><br>
+                   The signal strength above also indicates how strong your connection is to the device providing Wi-Fi access.<br>
+                   A strong connection is anything -50 dBm and above. It is recommended that the signal strength should not be<br>
+                   any lower than -70 dBm as this is the minimum required for basic web browsing and email delivery.<br><br> 
+
+                   An <b>open</b> Wi-Fi network is an unsecured connection with no forms of encryption or security applied. This<br>
+                   means that anyone within a suitable range, or strong enough 'signal' strength could connect to the network.<br>
+                   Now understanding signal strength allows us to get a rough idea of how great of a distance you could be in order<br>
+                   to carry out an attack on a Wi-Fi network. For example, have you ever attempted to log into a Wi-Fi network in a<br>
+                   shopping centre and been bombarded with the number of Wi-Fi networks advertising themselves? This is something to <br>
+                   keep in mind because although you may think you are the only individual in the area that could be connected, there<br>
+                   could always be an attacker gaining access from the distance.<br><br>
+                   A <b>private</b> Wi-Fi network is a secured, encrypted network that requires levels of security to connect. This means<br>
+                   only users that have authenticated are authorized to join the network. This could be in the form of a password or even<br>
+                   individuals credentials. One form of credential logging is captive portals. These are common in more secure public Wi-Fi<br>
+                   networks, often found in hotels and airports. Upon connection to the network they greet you with a web page that requires<br>
+                   the user to log in generally connecting an account or at minimum an e-mail address. Some of these networks would require<br>
+                   a subscription or a purchase in order to get onto the network, which many attackers are not willing to do. There is<br>
+                   no password to join as they use credentials, so only those authorized can access the network.<br><br>
+                   
+        </div>
+</body>
+</html>
